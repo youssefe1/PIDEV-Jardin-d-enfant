@@ -6,8 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Parent {
+public class Parent  implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id ; 
+	private Long Id_Parent ;
+	
 }
