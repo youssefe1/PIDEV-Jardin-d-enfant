@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import java.util.List;
 import javax.validation.constraints.*;
 
 
@@ -34,7 +34,18 @@ public class User implements Serializable {
     private String FirstName;
     private String LastName;
 
-    public User(Long Id) {
+
+
+
+        @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "message")
+	private List<Message> message;
+	
+        @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "notifications")
+	private List<Notifications> notifications;
+    
+
+
+public User(Long Id) {
         this.Id = Id;
     }
 

@@ -1,5 +1,4 @@
-package com.example.demo.model;
-
+package com.esprit.WEMANAGE.entities;
 import javax.persistence.*;
 
 @Entity
