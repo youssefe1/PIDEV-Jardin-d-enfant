@@ -40,6 +40,9 @@ public class User implements Serializable {
 	
         @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "notifications")
 	private List<Notifications> notifications;
+	
+	@OneToMany(mappedBy = "user")
+	private List<EventParticipants> eventParticipants;
     
 
 
