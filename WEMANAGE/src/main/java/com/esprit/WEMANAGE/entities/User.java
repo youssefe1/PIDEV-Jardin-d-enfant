@@ -14,10 +14,8 @@ import javax.validation.constraints.*;
 public class User implements Serializable {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
-    @NotNull(message = "The username can't be empty") @Size(min=3, message = "the title's length " +
-            "must be at least 3")
     private String UserName;
     @NotNull(message = "The password can't be empty") @Size(min=4, message = "the password's " +
             "length " +
