@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.esprit.WEMANAGE.entities;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;

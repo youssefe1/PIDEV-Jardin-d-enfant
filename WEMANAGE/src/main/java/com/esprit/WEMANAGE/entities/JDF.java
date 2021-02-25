@@ -35,8 +35,8 @@ public class JDF implements Serializable {
 	 @Email(message="Please provide a valid email address")
 	    @Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")
 	private String Email;
-	 @ManyToMany
-	    List <User> users;
+	/* @ManyToMany
+	    List <User> users;*/
 	 
 	 
 	 
@@ -109,12 +109,12 @@ public class JDF implements Serializable {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	public List<User> getUsers() {
+	/*public List<User> getUsers() {
 		return users;
 	}
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}
+	}*/
 	 
 	 
 	 

@@ -1,7 +1,7 @@
-package com.example.demo.repository;
+package com.esprit.WEMANAGE.repositories;
 
-import com.example.demo.model.LikeComment;
-import com.example.demo.model.LikePost;
+import com.esprit.WEMANAGE.entities.LikeComment;
+import com.esprit.WEMANAGE.entities.LikePost;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
