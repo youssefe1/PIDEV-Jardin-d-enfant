@@ -10,7 +10,7 @@ public class WemanageApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WemanageApplication.class, args);
-		print("hello");
+	
 	}
 
 }
