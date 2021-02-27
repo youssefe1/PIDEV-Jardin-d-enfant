@@ -19,22 +19,34 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 
+@Table(name="Evenement")
 @Entity
 public class Event implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="Event_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long IdEvenement;
+	@Column(name="Event_Description")
     private String Description;
+	
     @NotNull
+    @Column(name="Event_Type")
+    @Enumerated(EnumType.STRING)
+    
     private String EventType;
     private int Fee_supp;
+    @Column(name="Event_Designation")
     private String Designation;
+    @Column(name="Event_Participant_nbr")
     private int NbrParticipant_Max;
+   
     @Temporal(TemporalType.DATE)
+    @Column(name="Event_StartDate")
     private Date StartDate;
+    @Column(name="Event_EndDate")
     @Temporal(TemporalType.DATE)
     private Date EndDate;
     
