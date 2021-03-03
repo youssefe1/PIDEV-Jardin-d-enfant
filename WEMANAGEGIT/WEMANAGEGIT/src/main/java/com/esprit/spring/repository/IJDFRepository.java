@@ -1,13 +1,10 @@
 package com.esprit.spring.repository;
 
-
-import com.esprit.spring.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import com.esprit.spring.entities.JDF;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Long> {
-
-
+public interface IJDFRepository extends JpaRepository<JDF, Long> {
 
 }

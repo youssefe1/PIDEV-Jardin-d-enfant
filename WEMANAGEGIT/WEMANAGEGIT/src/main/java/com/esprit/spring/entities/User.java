@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.validation.constraints.*;
 
@@ -42,14 +42,13 @@ public class User implements Serializable {
 
 
 
-    /*    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "message")
-	private List<Message> message;
-	
-        @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "notifications")
-	private List<Notifications> notifications;
-       
-	@OneToMany(mappedBy = "user")
-	private List<EventParticipants> eventParticipants;*/
+
+    @JsonIgnore
+        @OneToMany(mappedBy = "user")
+	private List<Message> messages;
+    @JsonIgnore
+        @OneToMany(mappedBy = "user")
+	private List<Notification> notifications;
     
 
 

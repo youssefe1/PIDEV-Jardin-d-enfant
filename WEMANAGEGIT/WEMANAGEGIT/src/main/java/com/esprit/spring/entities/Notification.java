@@ -8,12 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 @Entity
-public class Notifications implements Serializable{
+public class Notification implements Serializable{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private  long Id;
+    private  Long Id;
 	
 	private String Body ;
 	private Date CreatedAt ;
@@ -24,14 +25,25 @@ public class Notifications implements Serializable{
 	
 	@ManyToOne
 	private User user ;
+	@Transient
+	private Long user_id ;
 	
 	
-	
-	
-	public long getId() {
+	public Notification() {
+		super();
+	}
+	public Notification( String body, Date createdAt, String link, String notifType, Boolean seen) {
+		super();
+		Body = body;
+		CreatedAt = createdAt;
+		Link = link;
+		NotifType = notifType;
+		Seen = seen;
+	}
+	public Long getId() {
 		return Id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 	public String getBody() {
@@ -63,6 +75,13 @@ public class Notifications implements Serializable{
 	}
 	public void setSeen(Boolean seen) {
 		Seen = seen;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	} 
+	
 	
 }

@@ -42,6 +42,9 @@ public class JDF implements Serializable {
 	 
 	 
 	 
+	public JDF() {
+		super();
+	}
 	public JDF(Long id, String description, int nBR_Emp, Date date_Creation, String logo, float fee, int review,
 			String localisation,
 			@javax.validation.constraints.Email(message = "Please provide a valid email address") @Pattern(regexp = ".+@.+\\..+", message = "Please provide a valid email address") String email) {
