@@ -83,9 +83,6 @@ public  class MyUserService implements UserDetailsService{
         u.setUserName(user.getUserName());
         return userRepository.save(u);
     }
-	
-   
-
-	
+  
 	 
 }

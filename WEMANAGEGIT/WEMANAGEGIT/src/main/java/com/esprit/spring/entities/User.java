@@ -2,10 +2,13 @@ package com.esprit.spring.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import java.util.List;
 import javax.validation.constraints.*;
 
@@ -18,6 +21,8 @@ public class User implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
+	@NotNull(message = "The username can't be empty") @Size(min = 3, message = "the title's length " +
+            "must be at least 3")
     private String userName;
     @NotNull(message = "The password can't be empty") @Size(min=3, message = "the password's " +
             "length " +
@@ -37,12 +42,12 @@ public class User implements Serializable {
 
 
 
-       /* @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "message")
+    /*    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "message")
 	private List<Message> message;
 	
         @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "notifications")
 	private List<Notifications> notifications;
-	
+       
 	@OneToMany(mappedBy = "user")
 	private List<EventParticipants> eventParticipants;*/
     
@@ -58,13 +63,12 @@ public User(Long Id) {
 
 	
 
-	public User(@NotNull(message = "The username can't be empty") @Size(min = 3, message = "the title's length " +
-            "must be at least 3") String UserName, @NotNull(message = "The password can't be empty") @Size(min = 3, message = "the password's " +
+	public User( @NotNull String userName, @NotNull(message = "The password can't be empty") @Size(min = 3, message = "the password's " +
             "length " +
-            "must be at least 8") String Password, @NotNull String Roles, boolean Active , String Email , int Telephone , String Adresse , String FirstName , String LastName) {
-        this.userName = UserName;
+            "must be at least 8") String Password, @NotNull String roles, boolean Active , String Email , int Telephone , String Adresse , String FirstName , String LastName) {
+        this.userName = userName;
         this.Password = Password;
-        this.roles = Roles;
+        this.roles = roles;
         this.Active = Active;
         this.Email = Email;
         this.Telephone = Telephone;
@@ -85,8 +89,14 @@ public User(Long Id) {
 		return userName;
 	}
 
+	
+
 	public void setUserName(String userName) {
-		userName = userName;
+		this.userName = userName;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 
 	public String getPassword() {
@@ -101,9 +111,7 @@ public User(Long Id) {
 		return roles;
 	}
 
-	public void setRoles(String roles) {
-		roles = roles;
-	}
+	
 
 	public boolean isActive() {
 		return Active;

@@ -14,6 +14,7 @@ import com.esprit.spring.entities.User;
 public interface IUserRepository extends JpaRepository<User,Long> {
 	
 	Optional<User> findByUserName(String username);
+	 
 
     public List<User> getUsersByRoles(String role);
 }
