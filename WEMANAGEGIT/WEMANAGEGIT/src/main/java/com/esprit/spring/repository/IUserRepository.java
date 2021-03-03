@@ -17,4 +17,6 @@ public interface IUserRepository extends JpaRepository<User,Long> {
 	 
 
     public List<User> getUsersByRoles(String role);
+    public List<User> getUsersByEmail(String role);
+
 }

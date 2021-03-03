@@ -2,6 +2,7 @@ package com.esprit.spring.entities;
 
 import java.io.Serializable;
 
+import javax.management.Notification;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class User implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long Id;
 	@NotNull(message = "The username can't be empty") @Size(min = 3, message = "the title's length " +
             "must be at least 3")
     private String userName;
@@ -53,7 +54,7 @@ public class User implements Serializable {
 
 
 public User(Long Id) {
-        this.id = Id;
+        this.Id = Id;
     }
 
     public User() {
@@ -77,11 +78,11 @@ public User(Long Id) {
     }
 
 	public Long getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(Long id) {
-		this.id=id;
+		Id = id;
 	}
 
 	public String getUserName() {
