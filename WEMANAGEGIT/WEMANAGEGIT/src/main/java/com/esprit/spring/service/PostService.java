@@ -2,7 +2,7 @@ package com.esprit.spring.service;
 
 import com.esprit.spring.dto.PostDto;
 import org.springframework.http.ResponseEntity;
-
+//
 public interface PostService {
 
     public ResponseEntity<?> createPost(PostDto postdto);

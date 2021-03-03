@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "likeComment")
-
+//
 public class LikeComment {
 
     @Id

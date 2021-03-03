@@ -18,7 +18,7 @@ import java.util.List;
 @Entity
 @Table(name = "comment")
 public class Comment {
-
+//
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY )

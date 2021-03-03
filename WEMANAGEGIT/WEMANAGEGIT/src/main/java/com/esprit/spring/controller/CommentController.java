@@ -5,14 +5,12 @@ import com.esprit.spring.service.impl.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+//
 @RestController
 @RequestMapping("/comment")
 public class CommentController {
     @Autowired
     CommentServiceImpl commentService;
-
-
 
     @PostMapping("")
     public ResponseEntity<?> createcomment(@RequestBody CommentDto commentDto){

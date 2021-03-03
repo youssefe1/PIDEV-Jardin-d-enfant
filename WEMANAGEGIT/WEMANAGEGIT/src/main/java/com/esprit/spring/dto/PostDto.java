@@ -1,5 +1,5 @@
 package com.esprit.spring.dto;
-
+//
 public class PostDto {
     private String postContent;
     private String urlMedia;
