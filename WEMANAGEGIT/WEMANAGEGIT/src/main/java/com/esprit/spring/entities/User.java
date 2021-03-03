@@ -48,7 +48,7 @@ public class User implements Serializable {
 	private List<Message> messages;
     @JsonIgnore
         @OneToMany(mappedBy = "user")
-	private List<Notification> notifications;
+	private List<Notifications> notifications;
     
 
 
@@ -81,7 +81,7 @@ public User(Long Id) {
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id=id;
 	}
 
 	public String getUserName() {
