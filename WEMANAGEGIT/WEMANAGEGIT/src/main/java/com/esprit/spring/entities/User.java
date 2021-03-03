@@ -20,7 +20,7 @@ public class User implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    private Long id;
 	@NotNull(message = "The username can't be empty") @Size(min = 3, message = "the title's length " +
             "must be at least 3")
     private String userName;
@@ -53,7 +53,7 @@ public class User implements Serializable {
 
 
 public User(Long Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     public User() {
