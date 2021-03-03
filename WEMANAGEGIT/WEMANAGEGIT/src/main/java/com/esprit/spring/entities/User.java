@@ -10,22 +10,24 @@ import java.util.List;
 import javax.validation.constraints.*;
 
 
+
+
 @Entity
 public class User implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
-    private String UserName;
-    @NotNull(message = "The password can't be empty") @Size(min=4, message = "the password's " +
+    private String userName;
+    @NotNull(message = "The password can't be empty") @Size(min=3, message = "the password's " +
             "length " +
             "must be at least 8")
     private String Password;
-    @NotNull
-    private String Roles;
+    @NotNull(message = "The Role can't be empty")
+    private String roles;
     private boolean Active;
-    @Email(message="Please provide a valid email address")
-    @Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address")
+    @Email
+    
     private String Email;
     private int Telephone;
     private String Adresse;
@@ -54,32 +56,15 @@ public User(Long Id) {
 		super();
 	}
 
-	public User(Long id, String userName,
-		@NotNull(message = "The password can't be empty") @Size(min = 4, message = "the password's length must be at least 8") String password,
-		@NotNull String roles, boolean active,
-		@javax.validation.constraints.Email(message = "Please provide a valid email address") @Pattern(regexp = ".+@.+\\..+", message = "Please provide a valid email address") String email,
-		int telephone, String adresse, String firstName, String lastName) {
-	super();
-	Id = id;
-	UserName = userName;
-	Password = password;
-	Roles = roles;
-	Active = active;
-	Email = email;
-	Telephone = telephone;
-	Adresse = adresse;
-	FirstName = firstName;
-	LastName = lastName;
-}
+	
 
 	public User(@NotNull(message = "The username can't be empty") @Size(min = 3, message = "the title's length " +
-            "must be at least 3") String UserName, @NotNull(message = "The password can't be empty") @Size(min = 4, message = "the password's " +
+            "must be at least 3") String UserName, @NotNull(message = "The password can't be empty") @Size(min = 3, message = "the password's " +
             "length " +
-            "must be at least 8") String Password, @NotNull String Roles, boolean Active , @Email(message="Please provide a valid email address")
-    @Pattern(regexp=".+@.+\\..+", message="Please provide a valid email address") String Email , int Telephone , String Adresse , String FirstName , String LastName) {
-        this.UserName = UserName;
+            "must be at least 8") String Password, @NotNull String Roles, boolean Active , String Email , int Telephone , String Adresse , String FirstName , String LastName) {
+        this.userName = UserName;
         this.Password = Password;
-        this.Roles = Roles;
+        this.roles = Roles;
         this.Active = Active;
         this.Email = Email;
         this.Telephone = Telephone;
@@ -97,11 +82,11 @@ public User(Long Id) {
 	}
 
 	public String getUserName() {
-		return UserName;
+		return userName;
 	}
 
 	public void setUserName(String userName) {
-		UserName = userName;
+		userName = userName;
 	}
 
 	public String getPassword() {
@@ -113,11 +98,11 @@ public User(Long Id) {
 	}
 
 	public String getRoles() {
-		return Roles;
+		return roles;
 	}
 
 	public void setRoles(String roles) {
-		Roles = roles;
+		roles = roles;
 	}
 
 	public boolean isActive() {
