@@ -33,19 +33,16 @@ public class UserRestControllerImpl {
     MyUserService userService;
 
     
-   /* @GetMapping("/user/fb")
+    @GetMapping("/user/fb")
     public String welcome(Principal principal) {
         Map<String, Object> details = (Map<String, Object>)
                 ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
         String userName = (String) details.get("name");
         return "Hi " + userName + " Welcome to my application !!";
-    }*/
-    
-    
-    @GetMapping("/user/fb")
-    public Principal getUser(Principal user){
-    	return user;
     }
+    
+    
+    
     
     
 

@@ -2,6 +2,7 @@ package com.esprit.spring.entities;
 
 import java.io.Serializable;
 
+import javax.management.Notification;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,7 +49,7 @@ public class User implements Serializable {
 	private List<Message> messages;
     @JsonIgnore
         @OneToMany(mappedBy = "user")
-	private List<Notification> notifications;
+	private List<Notifications> notifications;
     
 
 
