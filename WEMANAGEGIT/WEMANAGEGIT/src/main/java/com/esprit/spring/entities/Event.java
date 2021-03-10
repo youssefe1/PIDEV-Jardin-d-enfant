@@ -20,16 +20,15 @@ import javax.validation.constraints.Size;
 
 
 
-@Table(name="Evenement")
+
 @Entity
 public class Event implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="Event_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long IdEvenement;
+    private Long Id;
 	
 	@Column(name="Event_title")
 	private String title;
@@ -41,7 +40,7 @@ public class Event implements Serializable {
     @Column(name="Event_Type")
     @Enumerated(EnumType.STRING)
     
-    private EventType EventType;
+    private EventType eventType;
     
     private int Fee_supp;
     @Column(name="Event_Designation")
@@ -58,10 +57,10 @@ public class Event implements Serializable {
     
     
     
-    @OneToMany(mappedBy = "event")  
+    /*@OneToMany(mappedBy = "event")  
     List<EventParticipants> eventParticipants;
 	
-    /*@ManyToOne  
+    @ManyToOne  
     public Garden getGarden() {
     	return garden;
     }*/
@@ -73,6 +72,22 @@ public class Event implements Serializable {
 	
 
 
+	public Event(Long id, String title, String description, @NotNull EventType eventType, int fee_supp,
+			String designation, int nbrParticipant_Max, Date startDate, Date endDate) {
+		super();
+		Id = id;
+		this.title = title;
+		Description = description;
+		this.eventType = eventType;
+		Fee_supp = fee_supp;
+		Designation = designation;
+		NbrParticipant_Max = nbrParticipant_Max;
+		StartDate = startDate;
+		EndDate = endDate;
+	}
+
+
+
 	public Event(int fee_supp, @NotNull @Size(min = 20) String description, @NotNull EventType eventType,
 			@NotNull String designation,
 			@NotNull(message = "you should defined the max number of the participants") int nbrParticipant_Max,
@@ -80,7 +95,7 @@ public class Event implements Serializable {
 		super();
 		this.Fee_supp = fee_supp;
 		this.Description = description;
-		this.EventType = eventType;
+		this.eventType= eventType;
 		this.Designation = designation;
 		this.NbrParticipant_Max = nbrParticipant_Max;
 		this.StartDate = startDate;
@@ -89,14 +104,19 @@ public class Event implements Serializable {
 
 
 
-	public Long getIdEvenement() {
-		return IdEvenement;
-	}
 	
-	
-	public void setIdEvenement(Long idEvenement) {
-		IdEvenement = idEvenement;
+	public Long getId() {
+		return Id;
 	}
+
+
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+
+
 	public int getFee_supp() {
 		return Fee_supp;
 	}
@@ -109,12 +129,19 @@ public class Event implements Serializable {
 	public void setDescription(String description) {
 		Description = description;
 	}
+	
 	public EventType getEventType() {
-		return EventType;
+		return eventType;
 	}
+
+
+
 	public void setEventType(EventType eventType) {
-		EventType = eventType;
+		this.eventType = eventType;
 	}
+
+
+
 	public String getDesignation() {
 		return Designation;
 	}
@@ -138,6 +165,18 @@ public class Event implements Serializable {
 	}
 	public void setEndDate(Date endDate) {
 		EndDate = endDate;
+	}
+
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	
