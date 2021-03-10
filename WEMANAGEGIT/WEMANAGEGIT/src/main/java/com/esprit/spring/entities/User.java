@@ -3,12 +3,8 @@ package com.esprit.spring.entities;
 import java.io.Serializable;
 
 import javax.management.Notification;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -17,11 +13,12 @@ import javax.validation.constraints.*;
 
 
 @Entity
+@Table(name = "user")
 public class User implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    private Long id;
 	@NotNull(message = "The username can't be empty") @Size(min = 3, message = "the title's length " +
             "must be at least 3")
     private String userName;
@@ -54,7 +51,7 @@ public class User implements Serializable {
 
 
 public User(Long Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     public User() {
@@ -78,11 +75,11 @@ public User(Long Id) {
     }
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getUserName() {

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/comment")
 public class CommentController {
     @Autowired
+
     CommentServiceImpl commentService;
 
     @PostMapping("")
