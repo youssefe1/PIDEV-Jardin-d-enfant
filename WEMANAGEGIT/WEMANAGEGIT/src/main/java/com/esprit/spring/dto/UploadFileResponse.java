@@ -44,5 +44,4 @@ public class UploadFileResponse {
     public void setSize(long size) {
         this.size = size;
     }
-// Getters and Setters (Omitted for brevity)
 }

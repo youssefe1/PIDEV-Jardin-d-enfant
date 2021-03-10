@@ -23,9 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/post")
-//
+
 public class PostController {
-//
+
 
     @Autowired
     PostService postService;
@@ -112,6 +112,7 @@ return postService.getPostByUserId(id);
                 .map(file -> uploadFile(file))
                 .collect(Collectors.toList());
     }
+
 
     @GetMapping("/downloadFile/{fileName:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {

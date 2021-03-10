@@ -18,7 +18,9 @@ import java.nio.file.StandardCopyOption;
 
 @Service
 public class FileStorageService {
+
     private final Path fileStorageLocation;
+
 
     @Autowired
     public FileStorageService(FileStorageProperties fileStorageProperties) {
@@ -31,6 +33,7 @@ public class FileStorageService {
             throw new FileStorageException("Could not create the directory where the uploaded files will be stored.", ex);
         }
     }
+
 
     public String storeFile(MultipartFile file) {
         // Normalize file name
@@ -51,6 +54,8 @@ public class FileStorageService {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
     }
+
+
 
     public Resource loadFileAsResource(String fileName) {
         try {
