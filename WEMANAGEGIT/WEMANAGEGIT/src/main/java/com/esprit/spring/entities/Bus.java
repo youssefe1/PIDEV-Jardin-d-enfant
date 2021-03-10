@@ -18,8 +18,7 @@ public class Bus implements Serializable {
 
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Column(name="Bus_Id")
-	long IdBus;
+	private Long Id;
 	@Column(name="Bus_Area")
 	private String Area;
 	@Column(name="Bus_NbrPlaceDispo")
@@ -40,11 +39,14 @@ public class Bus implements Serializable {
 		this.NbrPlaceDispo = nbrPlaceDispo;
 		this.NbrPlaceMax = nbrPlaceMax;
 	}
-	public long getIdBus() {
-		return IdBus;
+	public Bus() {
+		super();
 	}
-	public void setIdBus(long idBus) {
-		IdBus = idBus;
+	public Long getId() {
+		return Id;
+	}
+	public void setId(Long id) {
+		Id = id;
 	}
 	public String getArea() {
 		return Area;
