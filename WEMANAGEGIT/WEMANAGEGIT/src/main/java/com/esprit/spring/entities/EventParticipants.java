@@ -18,12 +18,11 @@ public class EventParticipants implements Serializable {
 	
 	 
 	@ManyToOne
-    @JoinColumn(name = "userId",referencedColumnName="id",insertable = false, updatable = false)
+    @JoinColumn(name = "usId",referencedColumnName="Id",insertable = false, updatable = false)
 	private User user;
 
     @ManyToOne
-    @JoinColumn(name = "eventId",referencedColumnName="Event_id",insertable = false, updatable = false)
-    
+    @JoinColumn(name = "evId",referencedColumnName="Id",insertable = false, updatable = false)
     private Event event;
 }
 
