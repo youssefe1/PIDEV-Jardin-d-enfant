@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/post")
 //
 public class PostController {
-
+//
     @Autowired
     PostService postService;
     @Autowired
