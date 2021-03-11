@@ -9,7 +9,7 @@ public interface IBusService {
 	public Bus addBus(Bus B);
 	public void deleteBus(Long Id);
 	Bus updateBus(Bus B);
-	//public int getNbrPlaceDispo();
+	public int getNbrPlaceDispo();
 	
 
 }
