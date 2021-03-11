@@ -7,9 +7,9 @@ import com.esprit.spring.entities.Bus;
 public interface IBusService {
 	List<Bus> getAllBus(); 
 	public Bus addBus(Bus B);
-	public void deleteBus(Long IdBus);
+	public void deleteBus(Long Id);
 	Bus updateBus(Bus B);
-	public int getNbrPlaceDispo();
+	//public int getNbrPlaceDispo();
 	
 
 }
