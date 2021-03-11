@@ -43,9 +43,7 @@ public class BusRestControllerImpl {
  }
  
  
- 
- 
- //wlh bch nfach5ek
+
  @DeleteMapping("/deleteBus/{Id}")
  @ResponseBody
  public void deleteBus(@PathVariable("Id") Long Id){
