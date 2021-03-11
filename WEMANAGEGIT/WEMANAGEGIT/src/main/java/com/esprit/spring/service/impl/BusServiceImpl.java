@@ -37,10 +37,10 @@ public class BusServiceImpl implements IBusService {
 		return busRepository.save(B);
 	}
 
-	/*@Override
+	@Override
 	public int getNbrPlaceDispo() {
 		return busRepository.countBus();
-	}*/
+	}
 
 	
 
