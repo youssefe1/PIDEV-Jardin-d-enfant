@@ -19,12 +19,12 @@ import com.esprit.spring.repository.IBusRepository;
 import com.esprit.spring.repository.IEventRepository;
 import com.esprit.spring.service.BusServiceImpl;
 import com.esprit.spring.service.EventServiceImpl;
+import com.esprit.spring.service.IBusService;
 
 @RestController
-@RequestMapping("")
 public class BusRestControllerImpl {
 	@Autowired
-    BusServiceImpl busservice;
+    IBusService busservice;
  
  @Autowired
  	IBusRepository BusR;
@@ -42,12 +42,17 @@ public class BusRestControllerImpl {
 	return busservice.addBus(B);
  }
  
- @DeleteMapping("/deleteBus/{id}")
- public void deleteBus(@PathVariable("IdBus") Long IdBus){
-	 busservice.deleteBus(IdBus);
+ 
+ 
+ 
+ //wlh bch nfach5ek
+ @DeleteMapping("/deleteBus/{Id}")
+ @ResponseBody
+ public void deleteBus(@PathVariable("Id") Long Id){
+	 busservice.deleteBus(Id);
  }
  
- @PutMapping("/updateevent/{id}")
+ @PutMapping("/updatebus/{id}")
  @ResponseBody
  public Bus updateBus(@RequestBody Bus B){
 	return busservice.updateBus(B);
