@@ -55,6 +55,12 @@ public class BusRestControllerImpl {
  public Bus updateBus(@RequestBody Bus B){
 	return busservice.updateBus(B);
  }
+	
+@GetMapping("/NbrPlace")
+ @ResponseBody
+ public int getNbrPlaceDispo(){
+	  return busservice.getNbrPlaceDispo();
+ }
  
 
 
