@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.esprit.spring.entities.Bus;
 import com.esprit.spring.entities.Event;
 import com.esprit.spring.repository.IEventRepository;
 import com.esprit.spring.service.EventServiceImpl;
 
 
 @RestController
-@RequestMapping("")
 public class EventRestControllerImpl {
 	
 	@Autowired
@@ -41,15 +41,19 @@ public class EventRestControllerImpl {
 	return eventservice.addEvent(e);
  }
  
- @PutMapping("/updateevent/{id}")
+ @PutMapping("/updateevent/{Id}")
  @ResponseBody
- public Event updateEvent(@PathVariable("IdEvenement") Long IdEvenement,@RequestBody Event e){
-	return eventservice.updateEvent(e, IdEvenement);
+ public Event updateEvent(@PathVariable("Id") Long Id,@RequestBody Event e){
+	return EventR.save(e);
  }
  
- @DeleteMapping("/deleteevent/{id}")
- public Event deleteEventById(@PathVariable("IdEvenement") Long IdEvenement){
-	 return eventservice.deleteEventById(IdEvenement);
+ 
+ 
+  
+ 
+ @DeleteMapping("/deleteevent/{Id}")
+ public Event deleteEventById(@PathVariable("Id") Long Id){
+	 return eventservice.deleteEventById(Id);
  }
 
  
