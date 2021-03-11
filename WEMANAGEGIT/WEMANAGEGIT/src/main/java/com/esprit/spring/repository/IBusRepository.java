@@ -12,11 +12,15 @@ import com.esprit.spring.entities.Bus;
 @Repository
 public interface IBusRepository  extends JpaRepository<Bus, Long> {
 	
-	// public List<Bus> getAllBusById(long Id) ;
+	@Query("SELECT b FROM Bus b where b.Id=?1")
+	public List<Bus> getAllBusById(long Id) ;
 	
   
-	 //Optional<Bus> findById( long Id );
-	
-	//public Bus getBusById(long Id) ;
+	 Optional<Bus> findById( long Id );
+	 @Query("SELECT b FROM Bus b where b.Id=?1")
+	public Bus getBusById(long Id) ;
+
+	 @Query("SELECT count(*) FROM Bus")
+	    public int countBus();
 
 }
