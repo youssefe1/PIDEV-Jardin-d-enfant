@@ -1,5 +1,4 @@
-package com.esprit.spring.service;
-
+package com.esprit.spring.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.esprit.spring.entities.Bus;
 import com.esprit.spring.repository.IBusRepository;
+import com.esprit.spring.service.IBusService;
 
 @Service
 public class BusServiceImpl implements IBusService {
@@ -26,9 +26,9 @@ public class BusServiceImpl implements IBusService {
 	}
 
 	@Override
-	public void deleteBus(Long IdBus) {
-		Bus B = busRepository.findById((long) IdBus).get();
-		busRepository.deleteById(IdBus);
+	public void deleteBus(Long Id) {
+		Bus B = busRepository.findById((Long) Id).get();
+		busRepository.deleteById(Id);
 		
 	}
 
@@ -37,10 +37,10 @@ public class BusServiceImpl implements IBusService {
 		return busRepository.save(B);
 	}
 
-	@Override
+	/*@Override
 	public int getNbrPlaceDispo() {
 		return busRepository.countBus();
-	}
+	}*/
 
 	
 
