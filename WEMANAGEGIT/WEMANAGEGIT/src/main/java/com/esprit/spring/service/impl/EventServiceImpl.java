@@ -1,4 +1,4 @@
-package com.esprit.spring.service;
+package com.esprit.spring.service.impl;
 
 import java.util.Date;
 import java.util.List;
@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.esprit.spring.entities.Event;
 import com.esprit.spring.repository.IEventRepository;
+import com.esprit.spring.service.IEventSerivce;
 
 @Service
 public class EventServiceImpl implements IEventSerivce {
 	
 	@Autowired
-	IEventRepository eventrepository ;
+	IEventRepository eventrepository;
 
 	@Override
 	public List<Event> getAllEvent() {
@@ -21,8 +22,8 @@ public class EventServiceImpl implements IEventSerivce {
 	}
 
 	@Override
-	public Event getEventById(long IdEvenement) {
-		return eventrepository.findById(IdEvenement).orElse(null);
+	public Event getEventById(Long Id) {
+		return eventrepository.findById(Id).orElse(null);
 	}
 
 	@Override
@@ -33,8 +34,8 @@ public class EventServiceImpl implements IEventSerivce {
 	}
 
 	@Override
-	public Event updateEvent(Event e, long IdEvenement) {
-		Event event = getEventById(IdEvenement);
+	public Event updateEvent(Long Id,Event e) {
+		Event event = getEventById(Id);
 	       
 	        return eventrepository.save(event);
 		
@@ -58,10 +59,10 @@ public class EventServiceImpl implements IEventSerivce {
 	
 
 	@Override
-	public Event deleteEventById(long IdEvenement) {
-		 Event event=eventrepository.findById(IdEvenement).orElse(null);
+	public Event deleteEventById(Long Id) {
+		 Event event=eventrepository.findById(Id).orElse(null);
 	       
-	        eventrepository.deleteById(IdEvenement);
+	        eventrepository.deleteById(Id);
 	        return event;
 	}
 	
