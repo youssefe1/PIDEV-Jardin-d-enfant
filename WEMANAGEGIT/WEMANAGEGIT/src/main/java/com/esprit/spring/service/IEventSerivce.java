@@ -4,15 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import com.esprit.spring.entities.Event;
-
-public interface IEventSerivce {
-
 	List<Event> getAllEvent();
 	
-	public Event getEventById(long IdEvenement);
+	public Event getEventById(Long Id);
 	public Event addEvent(Event e);
-	public Event updateEvent(Event e, long IdEvenement);
-	public Event deleteEventById(long IdEvenement);
+	public Event updateEvent(Long Id,Event e);
+	public Event deleteEventById(Long Id);
 	public Event getEventByDate (Date date);
 	
 
