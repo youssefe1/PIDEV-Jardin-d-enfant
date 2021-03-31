@@ -2,9 +2,12 @@ package com.esprit.spring.entities;
 
 import java.io.Serializable;
 
-import javax.management.Notification;
-import javax.persistence.*;
-
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -13,12 +16,11 @@ import javax.validation.constraints.*;
 
 
 @Entity
-@Table(name = "user")
 public class User implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long Id;
 	@NotNull(message = "The username can't be empty") @Size(min = 3, message = "the title's length " +
             "must be at least 3")
     private String userName;
@@ -30,7 +32,7 @@ public class User implements Serializable {
     private String roles;
     private boolean Active;
     @Email
-    
+    private String Etat;
     private String Email;
     private int Telephone;
     private String Adresse;
@@ -42,16 +44,34 @@ public class User implements Serializable {
 
 
     @JsonIgnore
-        @OneToMany(mappedBy = "user")
+        @OneToMany(mappedBy = "sender")
 	private List<Message> messages;
     @JsonIgnore
         @OneToMany(mappedBy = "user")
-	private List<Notifications> notifications;
+	private List<Notification> notifications;
+    
+
+    /*yasmine*/
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="UserInvitation")
+	private  List<EventParticipantsInvitation> invitations;
+    
+    
+    
     
 
 
+public List<EventParticipantsInvitation> getInvitations() {
+		return invitations;
+	}
+
+	public void setInvitations(List<EventParticipantsInvitation> invitations) {
+		this.invitations = invitations;
+	}
+
+
+
 public User(Long Id) {
-        this.id = Id;
+        this.Id = Id;
     }
 
     public User() {
@@ -62,11 +82,12 @@ public User(Long Id) {
 
 	public User( @NotNull String userName, @NotNull(message = "The password can't be empty") @Size(min = 3, message = "the password's " +
             "length " +
-            "must be at least 8") String Password, @NotNull String roles, boolean Active , String Email , int Telephone , String Adresse , String FirstName , String LastName) {
+            "must be at least 8") String Password, @NotNull String roles, boolean Active ,String Etat, String Email , int Telephone , String Adresse , String FirstName , String LastName) {
         this.userName = userName;
         this.Password = Password;
         this.roles = roles;
         this.Active = Active;
+        this.Etat = Etat;
         this.Email = Email;
         this.Telephone = Telephone;
         this.Adresse = Adresse;
@@ -75,11 +96,11 @@ public User(Long Id) {
     }
 
 	public Long getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		Id = id;
 	}
 
 	public String getUserName() {
@@ -98,6 +119,15 @@ public User(Long Id) {
 
 	public String getPassword() {
 		return Password;
+	}
+	
+
+	public String getEtat() {
+		return Etat;
+	}
+
+	public void setEtat(String etat) {
+		this.Etat = etat;
 	}
 
 	public void setPassword(String password) {

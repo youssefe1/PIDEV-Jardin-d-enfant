@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.*;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,10 +19,11 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.ManyToAny;
 
-import antlr.collections.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
-public class JDF implements Serializable {
+public class Jdf implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id ; 
@@ -38,10 +40,33 @@ public class JDF implements Serializable {
 	private String Email;
 	 @ManyToMany
 	    java.util.List<User>users;
+		public Jdf() {
+			super();
+		}
+		   @JsonIgnore
+	        @OneToMany(mappedBy = "jdf")
+		private List<FeedBack> feeds;
 	 
 	 
-	 
-	 
+		   /* yasmine */
+			 @OneToMany(cascade = CascadeType.ALL, mappedBy="kindergartenevent")
+				private java.util.List<Event>EventJDF;
+			 @OneToMany(cascade = CascadeType.ALL, mappedBy="kindergarten")
+				private Set<Bus> Bus;
+				
+	public Jdf(String description, int nBR_Emp, Date date_Creation, String logo, float fee, int review,
+			String localisation,
+			@javax.validation.constraints.Email(message = "Please provide a valid email address") @Pattern(regexp = ".+@.+\\..+", message = "Please provide a valid email address") String email) {
+		super();
+		Description = description;
+		NBR_Emp = nBR_Emp;
+		Date_Creation = date_Creation;
+		Logo = logo;
+		this.fee = fee;
+		Review = review;
+		Localisation = localisation;
+		Email = email;
+	}/*
 	public JDF(Long id, String description, int nBR_Emp, Date date_Creation, String logo, float fee, int review,
 			String localisation,
 			@javax.validation.constraints.Email(message = "Please provide a valid email address") @Pattern(regexp = ".+@.+\\..+", message = "Please provide a valid email address") String email) {
@@ -55,7 +80,7 @@ public class JDF implements Serializable {
 		Review = review;
 		Localisation = localisation;
 		Email = email;
-	}
+	}*/
 	public Long getId() {
 		return Id;
 	}
@@ -110,13 +135,19 @@ public class JDF implements Serializable {
 	public void setEmail(String email) {
 		Email = email;
 	}
-	/*public List<User> getUsers() {
+
+
+
+	public java.util.List<User> getUsers() {
 		return users;
 	}
-	public void setUsers(List<User> users) {
+
+
+
+	public void setUsers(java.util.List<User> users) {
 		this.users = users;
-	}*/
-	 
+	}
+
 	 
 	 
 	

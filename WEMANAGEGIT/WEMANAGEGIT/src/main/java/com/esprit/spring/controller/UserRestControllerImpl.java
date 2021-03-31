@@ -63,6 +63,13 @@ public class UserRestControllerImpl {
             System.err.println(result.getAllErrors());
         return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
     }
+    @PostMapping("/user/confirmer")
+    public ResponseEntity<User> confirmer(@RequestBody User user , BindingResult result)throws Exception{
+    	
+    	  if (result.hasErrors())
+              System.err.println(result.getAllErrors());
+    	return new ResponseEntity<>(userService.Confirmer(user), HttpStatus.CREATED);	
+    }
     
     @PostMapping("/admin/add")
     public ResponseEntity<User> addAdmin(@RequestBody User user, BindingResult result) throws Exception {

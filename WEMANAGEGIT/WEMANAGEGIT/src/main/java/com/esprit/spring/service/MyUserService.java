@@ -51,10 +51,28 @@ public  class MyUserService implements UserDetailsService{
                 "already exist");
         user.setPassword(securityConfig.passwordEncoder().encode(user.getPassword()));
         user.setRoles("ROLE_USER");
-        user.setActive(true);
+        user.setActive(false);
+        user.setEtat("Pending");
+        
         return userRepository.save(user);
     }
-   
+    public User addDoctor(User user) throws Exception {
+        if (userRepository.findByUserName(user.getUserName()).isPresent()) throw new Exception("This " +
+                "username " +
+                "already exist");
+        user.setPassword(securityConfig.passwordEncoder().encode(user.getPassword()));
+        user.setRoles("ROLE_DOCTOR");
+        user.setActive(true);
+        user.setEtat("OK");
+        
+        return userRepository.save(user);
+    }
+    public User  Confirmer(User user) throws Exception{
+    	
+    	user.setActive(true);
+    	user.setEtat("Accepted");
+    	return userRepository.save(user);
+    }
     public User addAdmin(User user) throws Exception {
         if (userRepository.findByUserName(user.getUserName()).isPresent()) throw new Exception("This username " +
                 "already exist");
@@ -77,6 +95,12 @@ public  class MyUserService implements UserDetailsService{
     public User updateUserName(Long userId, User user){
         User u = getUserById(userId);
         u.setUserName(user.getUserName());
+        return userRepository.save(u);
+    }
+    
+    public User updateToDelegate(Long userId, User user){
+        User u = getUserById(userId);
+        u.setRoles("ROLE_DELEGATE");
         return userRepository.save(u);
     }
   

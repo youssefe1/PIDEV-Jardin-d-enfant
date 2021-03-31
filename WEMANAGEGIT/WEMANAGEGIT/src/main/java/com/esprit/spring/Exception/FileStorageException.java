@@ -1,4 +1,4 @@
-package com.esprit.spring.Exception;
+package com.esprit.spring.exception;
 
 public class FileStorageException extends RuntimeException {
     public FileStorageException(String message) {

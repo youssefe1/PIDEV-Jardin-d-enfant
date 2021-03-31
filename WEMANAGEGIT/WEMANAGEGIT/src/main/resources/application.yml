@@ -1,3 +1,11 @@
+
+twilio:
+  account_sid: ACbef60b8f46d975d913b8cf2cc9fd69fe 
+  auth_token: f137dfa8500e5c5f5d0c432bacb2f4d1
+  from_number: "+14155238886"
+
+
+
 security:
   oauth2:
     client:
@@ -10,3 +18,4 @@ security:
       clientAuthenticationScheme: form
     resource:
       userInfoUri: https://graph.facebook.com/me
+      
