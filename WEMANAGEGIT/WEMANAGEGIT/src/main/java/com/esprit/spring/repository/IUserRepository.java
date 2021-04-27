@@ -18,6 +18,9 @@ public interface IUserRepository extends JpaRepository<User,Long> {
 
     public List<User> getUsersByRoles(String role);
     
+    @Query(value="select * from user n where n.user_id=0",nativeQuery=true)
+	public List<User> getUserProfile();
+    
    
 
 }

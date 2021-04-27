@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.esprit.spring.service.Smsservice;
 import com.twilio.exception.ApiException;
@@ -35,14 +36,18 @@ public class TwilioController {
 	}
 	
    @PostMapping("/sendmessage")
-   public ResponseEntity<Object> sendmessage(Smsrequest smsrequest)
+   public String sendmessage(Smsrequest smsrequest)
    {
+	   String a = "redirect:https://localhost:44332";
 	   String status=smsservice.whatsup(smsrequest);
 	   if("sent".equals(status)||"queued".equals(status))
        {
-       	return new ResponseEntity<Object>("sent successfully",HttpStatus.OK);
+       	//return new ResponseEntity<Object>("sent successfully",HttpStatus.OK);
+       //	return new RedirectView("redirectedUrl");
+       	return a;
        }
-	   return new ResponseEntity<Object>("failed to send message",HttpStatus.NOT_FOUND);
+	   return a;
+	   //return new ResponseEntity<Object>("failed to send message",HttpStatus.NOT_FOUND);
    }
    
    @GetMapping("/makeCall")

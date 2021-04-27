@@ -21,6 +21,7 @@ public class FileUploadController {
   }
   @RequestMapping("/upload")
   public String upload(Model model,@RequestParam("files") MultipartFile[] files) {
+	  String a = "redirect:https://localhost:44332";
 	  StringBuilder fileNames = new StringBuilder();
 	  for (MultipartFile file : files) {
 		  Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
@@ -32,7 +33,7 @@ public class FileUploadController {
 		}
 	  }
 	  model.addAttribute("msg", "Successfully uploaded files "+fileNames.toString());
-	  return "uploadstatusview";
+	  return a;
   }
   
   
