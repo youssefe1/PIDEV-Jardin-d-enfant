@@ -1,0 +1,86 @@
+﻿@model WE_MANAGE_ConsumeWebApi.Models.Notification
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<style>
+    .btn {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+</style>
+<div>
+    <h4>Notification</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.body)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.body)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.createdAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notifType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notifType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.user_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_id)
+        </dd>
+
+    </dl>
+</div>
+<p>
+   
+
+    <a class="btn" href="@Url.Action("Edit", new { id = Model.Id })">
+        <i class="fa fa-pencil"></i>
+    </a>
+    <a  class="btn"href="/Notification/Index">
+        <i class="fa fa-backward"></i>
+    </a>
+</p>

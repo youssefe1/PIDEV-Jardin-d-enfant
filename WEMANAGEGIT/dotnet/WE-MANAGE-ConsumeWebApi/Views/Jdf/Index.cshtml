@@ -1,0 +1,100 @@
+﻿@model IEnumerable<WE_MANAGE_ConsumeWebApi.Models.Jdf>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<style>
+    .btn {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+</style>
+<br />
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.review)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.logo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_Creation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nbr_Emp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.localisation)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.review)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.logo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_Creation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nbr_Emp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.localisation)
+            </td>
+            <td>
+                <a class="btn" href="@Url.Action("Edit",new { id = item.id })">
+                    <i class="fa fa-pencil"></i>
+                </a>
+                <a class="btn" href="@Url.Action("Details",new { id = item.id })">
+                    <i class="fa fa-eye"></i>
+                </a>
+                <a class="btn" href="@Url.Action("Delete",new { id = item.id })">
+                    <i class="fa fa-trash"></i>
+                </a>
+
+            </td>
+        </tr>
+    }
+
+</table>

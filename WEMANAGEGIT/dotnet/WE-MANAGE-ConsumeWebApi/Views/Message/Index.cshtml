@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WE_MANAGE_ConsumeWebApi.Models.Message>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<style>
+    .btn {
+        background-color: DodgerBlue;
+        border: none;
+        color: white;
+        padding: 12px 16px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+            background-color: RoyalBlue;
+        }
+</style>
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sender.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sender.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                <a class="btn" href="@Url.Action("Edit",new { id = item.Id })">
+                    <i class="fa fa-pencil"></i>
+                </a>
+                <a class="btn" href="@Url.Action("Details",new { id = item.Id })">
+                    <i class="fa fa-eye"></i>
+                </a>
+                <a class="btn" href="@Url.Action("Delete",new { id = item.Id })">
+                    <i class="fa fa-trash"></i>
+                </a>
+
+            </td>
+        </tr>
+
+    }
+<td>
+    <a class="btn" href="/Message/Create">
+        <i class="fa fa-plus"></i>
+
+
+    </a>
+    <a class="btn" href="http://localhost:8080/chat">
+        <i class="fa fa-comment"></i>
+    </a>
+
+</td>
+</table>
