@@ -1,0 +1,130 @@
+﻿@model WE_MANAGE_ConsumeWebApi.Models.Event
+
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    .form-control {
+        height: 35px;
+        line-height: 37px;
+        background: transparent;
+        border: 1px solid #87d3e9;
+        font-size: 14px;
+        color: #e2e6ff;
+        border-radius: 10px;
+    }
+
+    .p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 18px;
+        font-style: italic
+    }
+
+    .container {
+        margin-top: 100px !important;
+    }
+
+    .btn-outline-info {
+        color: #0094ff !important;
+        border-color: #0094ff !important;
+    }
+</style>
+
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Event</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            <p>Title</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Description</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Price</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fee_supp, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fee_supp, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Participants Number</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nbrParticipants, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nbrParticipants, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Invitation Number</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nbrInvites, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nbrInvites, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Event Date</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.eventDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.eventDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>
+                Event Start Time
+            </p>
+            <div class="col-md-10">
+
+                <input type="datetime-local" id=@Html.EditorFor(m => m.eventStartDate, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p> Event End Time</p>
+            <div class="col-md-10">
+
+                <input type="datetime-local" id=@Html.EditorFor(m => m.eventEndDate, new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+        </div>
+        <div class="form-group">
+            <p> Photo</p>
+
+            <div class="col-md-10">
+                @Html.TextBox("file", null, new { type = "file", @accept = "image/*" })
+                @Html.ValidationMessageFor(m => m.photo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class=" btn btn-outline-info" style="border-radius: 24px!important" />
+            </div>
+        </div>
+    </div>
+}
+
+<button type="button" class="btn btn-light" style="border-radius: 16px">@Html.ActionLink("List Events", "DisplayClientEvents")</button>
+

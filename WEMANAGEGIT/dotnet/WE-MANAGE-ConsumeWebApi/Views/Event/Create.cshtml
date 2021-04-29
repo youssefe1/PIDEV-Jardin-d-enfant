@@ -1,0 +1,235 @@
+﻿@model WE_MANAGE_ConsumeWebApi.Models.Event
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .btn-outline-info:hover {
+        color: #fff !important;
+        background-color: #0094ff !important;
+        border-color: #0094ff !important;
+       
+    }
+
+    .btn-outline-info {
+        
+        color: #0094ff !important;
+        border-color: #0094ff !important;
+    }
+    .container {
+        margin-top: 100px !important;
+    }
+
+    .form-control {
+        
+        background: transparent;
+        border: 1px solid #87d3e9;
+        font-size: 14px;
+     
+        border-radius: 10px;
+    }
+
+</style>
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+
+            <h3>Add Event</h3>
+        </div>
+
+    </div>
+    <div class="clearfix"></div>
+
+            <div class="x_panel">
+                <div class="x_title" style="margin-top:50px!important">
+                    <h2> Insert event informations</h2>
+
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+
+                    @using (Html.BeginForm("Create", "Event", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal form-label-left", @enctype = "multipart/form-data", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="row justify-content-center m-3">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-12 col-sm-12 label-align" for="Title" >
+                                        Title <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        @Html.TextBoxFor(m => m.title, new { @class = "form-control", @placeholder = "Title" })
+                                        @Html.ValidationMessageFor(m => m.title, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-12 col-sm-12 label-align" for="Description">
+                                        Description <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        @Html.TextBoxFor(m => m.description, new { @class = "form-control", @placeholder = "Description" })
+                                        @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center m-3">
+                            <div class="col-md-6 col-sm-6">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-12 col-sm-12 label-align" for="fee_supp">
+                                        Fee <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        @Html.TextBoxFor(m => m.fee_supp, new { @class = "form-control", @placeholder = "fee_supp" })
+                                        @Html.ValidationMessageFor(m => m.fee_supp, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-12 col-sm-12 label-align" for="type">
+                                        Type : <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        @Html.EnumDropDownListFor(m => m.type, new { @class = "form-control", @placeholder = "type" })
+                                        @Html.ValidationMessageFor(m => m.type, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row justify-content-center m-3">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-12 col-sm-12 label-align" for="etat">
+                                        Etat <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        @Html.EnumDropDownListFor(m => m.etat, new { @class = "form-control", @placeholder = "etat" })
+                                        @Html.ValidationMessageFor(m => m.etat, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-sm-6">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-12 col-sm-12 label-align" for="category">
+                                        Category: <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        @Html.EnumDropDownListFor(m => m.category, new { @class = "form-control", @placeholder = "category" })
+                                        @Html.ValidationMessageFor(m => m.category, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-center m-3">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-12 col-sm-12 label-align" for="nbrParticipants">
+                                        Number of Participants <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        @Html.TextBoxFor(m => m.nbrParticipants, new { @class = "form-control", @placeholder = "nbrParticipants" })
+                                        @Html.ValidationMessageFor(m => m.nbrParticipants, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-sm-6">
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-12 col-sm-12 label-align" for="nbrInvites">
+                                        Number of Invitations <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-12 col-sm-12 ">
+                                        @Html.TextBoxFor(m => m.nbrInvites, new { @class = "form-control", @placeholder = "nbrInvites" })
+                                        @Html.ValidationMessageFor(m => m.nbrInvites, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center m-3">
+                            <div class="col-md-12 col-sm-12 ">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.eventDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(m => m.eventDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(m => m.eventDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center m-3">
+                            <div class="col-md-6 col-sm-6 ">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.eventStartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-12 col-sm-12">
+
+                                        <input type="datetime-local" id=@Html.EditorFor(m => m.eventStartDate, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                    </div>
+
+                                  
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.eventEndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-12 col-sm-12">
+
+                                            <input type="datetime-local" id=@Html.EditorFor(m => m.eventEndDate, new { htmlAttributes = new { @class = "form-control" } })
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="row justify-content-center m-3">
+                            <div class="col-md-6 col-sm-6 ">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.photo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextBox("file", null, new { type = "file", @accept = "image/*" })
+                                        @Html.ValidationMessageFor(m => m.photo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row justify-content-center m-3">
+                            
+                                
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Create" class=" btn btn-outline-info" style="border-radius: 24px!important" />
+                                        </div>
+                                    </div>
+                                
+
+                            </div>
+
+                                }
+
+                            </div>
+                        </div>
+                        </div>
+   
+<div>
+    @Html.ActionLink("Back to List", "DisplayClientEvents")
+</div>

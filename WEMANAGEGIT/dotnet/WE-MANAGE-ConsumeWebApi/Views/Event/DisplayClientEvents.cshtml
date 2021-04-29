@@ -1,0 +1,109 @@
+﻿@model IEnumerable<WE_MANAGE_ConsumeWebApi.Models.Event>
+
+
+@{
+    ViewBag.Title = "DisplayClientEvents";
+    { WE_MANAGE_ConsumeWebApi.Models.User user = (WE_MANAGE_ConsumeWebApi.Models.User)Session["User"]; }
+}
+
+
+
+<h1 style=" margin-top: 65px!important">List of all the Events</h1>
+
+
+<style>
+    .card:hover {
+        box-shadow: -1px 9px 40px -12px #808080;
+    }
+
+    .imageThumbnail {
+        height: 200px !important;
+        width: 280px !important;
+    }
+
+    .btn-outline-info:hover {
+        color: #0094ff !important;
+        background-color: #0094ff !important;
+        border-color: #0094ff !important;
+    }
+
+    .btn-outline-info {
+        color: #0094ff !important;
+        border-color: #0094ff !important;
+    }
+
+    .container {
+        margin-top: 70px !important;
+    }
+
+
+
+    .a:hover {
+        color: #d1d3d6 !important;
+    }
+</style>
+<div class="clearfix"></div>
+
+<div class="x_panel">
+    <div class="x_title">
+       
+
+        <div class="row justify-content-center m-3">
+            <div class="col-md-12 col-sm-12">
+
+                <h4>Clic on this button to create your new event : <button type="button" class=" btn btn-outline-info" style="border-radius: 24px!important">@Html.ActionLink("Create", "Create")</button> </h4>
+
+
+            </div>
+
+        </div>
+        <div class="row">
+
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="row" style="margin-right:20.5px!important">
+                    <div class="card" style="margin:10px;">
+                        <img src="~/EventImages/@item.photo" class="card-img-top imageThumbnail" />
+                        <div class="card-body " style="background-color: #182039!important">
+                            <div class="card-title">
+                                <h2 style="color: #fff!important">@item.title</h2>
+                            </div>
+                            <div class="card-text">
+                                <p style="color: #fff!important">Price : @item.fee_supp</p>
+                                <p style="color: #fff!important">Date : @item.eventStartDate</p>
+                            </div>
+                            <button type="button" class="btn btn-light" style="border-radius: 16px">@Html.ActionLink("View More..", "ViewMore", new { id = item.id })</button>
+                            <button type="button" class="btn btn-light " style="border-radius: 16px">@Html.ActionLink("Edit", "Edit", new { id = item.id })</button>
+                            <button type="button" class="btn btn-light" style="border-radius: 16px">@Html.ActionLink("Delete", "Delete", new { id = item.id })</button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+    $('.card').hover(
+        function () {
+            $(this).animate({
+                marginTop: "-=1%",
+                marginBottom: "+=1%"
+            }, 200)
+        },
+        function () {
+            $(this).animate({
+                marginTop: "+=1%",
+                marginBottom: "-=1%"
+            })
+        }
+    )
+</script>
+
+
