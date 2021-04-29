@@ -1,0 +1,113 @@
+﻿@model WE_MANAGE_ConsumeWebApi.Models.Bus
+
+@{
+    ViewBag.Title = "Create";
+}
+<style>
+    .container {
+        margin-top: 100px !important;
+    }
+    .btn-outline-info:hover {
+        color: #fff !important;
+        background-color: #0094ff !important;
+        border-color: #0094ff !important;
+    }
+
+    .btn-outline-info {
+        color: #0094ff !important;
+        border-color: #0094ff !important;
+    }
+    .form-control {
+        background: transparent;
+        border: 1px solid #87d3e9;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+</style>
+<h2>Add the new bus</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        Driver
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.driver, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.driver, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Seat Capacity
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.seatCapacity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.seatCapacity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.latStart, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.latStart, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.latStart, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.lonStart, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.lonStart, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.lonStart, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.latArrival, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.latArrival, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.latArrival, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.lonArrival, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.lonArrival, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.lonArrival, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.rate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.rate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.rate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Trajet, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Trajet, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Trajet, "", new { @class = "text-danger" })
+        </div>
+    </div>
+ 
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class=" btn btn-outline-info" style="border-radius: 24px!important" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Buses")
+</div>

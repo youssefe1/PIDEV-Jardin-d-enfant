@@ -1,0 +1,92 @@
+﻿@model IEnumerable<WE_MANAGE_ConsumeWebApi.Models.Bus>
+
+
+@{
+    ViewBag.Title = "Buses";
+    { WE_MANAGE_ConsumeWebApi.Models.User user = (WE_MANAGE_ConsumeWebApi.Models.User)Session["User"]; }
+}
+
+<style>
+    .container {
+        margin-top: 100px !important;
+    }
+
+    .list-group-item {
+        background-color: #1e274500;
+        color: #fff;
+        border-color: #fff;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: none;
+    }
+
+    hr {
+        border-color: #fff;
+    }
+
+
+    .btn-outline-info:hover {
+        color: #fff !important;
+        background-color: #0094ff !important;
+        border-color: #0094ff !important;
+    }
+
+    .btn-outline-info {
+        color: #0094ff !important;
+        border-color: #0094ff !important;
+    }
+
+    #myVideo {
+        object-fit: initial;
+        width: 100%;
+        height: 300px;
+    }
+</style>
+
+<div>
+    <video autoplay muted loop id="myVideo" src="@Url.Content("~/Video/kwemanagebus.mp4")">
+    </video>
+    <h2>Availble Buses</h2>
+</div>
+
+
+<p>
+    <h4 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color:#fff">New Bus for our familly ! click button to integrate it to the collection : <button type="button" class=" btn btn-outline-info" style="border-radius: 24px!important">@Html.ActionLink("Create", "Create")</button> </h4>
+</p>
+
+
+@foreach (var item in Model)
+{
+
+    <ul class="list-group">
+
+        <li class="list-group-item">
+
+            <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size:24px; color:#8c91b6">  <i class="las la-user-tie" style="font-size:48px;color:#8c91b6"> </i> Driver Name :  @Html.DisplayFor(modelItem => item.driver) </p>
+            <p><HR size=5 align=left color=aliceblue></p>
+
+            <ul class="list-group">
+                <li class="list-group-item"><i class="las la-chair" style="font-size:32px;color:#fff"> </i>  @Html.DisplayNameFor(model => model.seatCapacity ) :  @Html.DisplayFor(modelItem => item.seatCapacity) </li>
+
+                <li class="list-group-item"><i class="las la-money-check" style="font-size:32px;color:#fff"> </i> @Html.DisplayNameFor(model => model.rate):   @Html.DisplayFor(modelItem => item.rate) </li>
+                <li class="list-group-item"><i class="las la-road" style="font-size:32px;color:#fff"> </i> @Html.DisplayNameFor(model => model.Trajet):  @Html.DisplayFor(modelItem => item.Trajet) </li>
+
+            </ul>
+
+
+    </ul>
+    <br />
+
+    <button type="button" class="btn btn-light " style="border-radius: 16px;position:center;font-size:19px">@Html.ActionLink("Edit", "Edit", new { id = item.matricule })</button>
+    <button type="button" class="btn btn-light" style="border-radius: 16px;position:center;font-size:19px">@Html.ActionLink("Delete", "Delete", new { id = item.matricule })</button>
+
+
+
+}
+
+
+
+
+
+
