@@ -1,0 +1,112 @@
+﻿@model WeManage.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Post Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            User
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user.firstName) @Html.DisplayFor(model => model.user.lastName) (@Html.DisplayFor(model => model.user.id))
+        </dd>
+
+        <dt>
+            Post
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.textContent)
+        </dd>
+
+        <dt>
+            Url
+        </dt>
+
+        <dd>
+            <a target="_blank" href=@Html.DisplayFor(model => model.urlMedia)>Media</a>
+        </dd>
+
+        <dt>
+            Created
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.createdAt)
+        </dd>
+
+        <dt>
+            Updated
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updatedAt)
+        </dd>
+
+        <dt>
+            Comments
+        </dt>
+
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>
+                        User
+                    </th>
+                    <th>
+                        Comment
+                    </th>
+                    <th>
+                        Created
+                    </th>
+                    <th>
+                        Updated
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.comments)
+                {
+                    <tr>
+                        <td>
+                            @if (item.user != null)
+                            {
+                                @item.user.firstName@:&nbsp;@item.user.lastName (@item.user.id)
+                            }
+                        </td>
+                        <td>
+                            @item.content
+                        </td>
+                        <td>
+                            @item.createdAt
+                        </td>
+                        <td>
+                            @item.updatedAt
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Comment", new { id = item.id }, null) |
+                            @Html.ActionLink("Details", "Details", "Comment", new { id = item.id }, null) |
+                            @Html.ActionLink("Delete", "Delete", "Comment", new { id = item.id }, null)
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </dd>
+
+    </dl>
+  
+</div>
+<p>
+    @Html.ActionLink("Add Comment", "Create", "Comment", new { id = Model.id, userId = Model.user.id }, null) |
+    @Html.ActionLink("Edit Post", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index", new { id = Model.user.id })
+</p>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<WeManage.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (ViewBag.user != null)
+{
+    <h2>@ViewBag.user.firstName @ViewBag.user.lastName's Posts</h2>
+}
+else
+{
+    <h2>All Posts</h2>
+}
+
+<p>
+    @if (ViewBag.user != null)
+    {
+    <span>@Html.ActionLink("Display All Posts", "Index", new { id = "" }) | </span>
+    }
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.userId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            User
+        </th>
+        <th>
+            Post ID
+        </th>
+        <th>
+            Post
+        </th>
+        <th>
+            Url
+        </th>
+        <th>
+            Created
+        </th>
+        <th>
+            Updated
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.firstName) @Html.DisplayFor(modelItem => item.user.lastName) (@Html.DisplayFor(modelItem => item.user.id))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.textContent)
+            </td>
+            <td>
+                <a target="_blank" href=@Html.DisplayFor(modelItem => item.urlMedia)>Media</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updatedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

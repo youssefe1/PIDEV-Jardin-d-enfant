@@ -1,0 +1,63 @@
+﻿@model WeManage.Models.Comment
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Comment</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Comment</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.content, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.content, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Created</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.createdAt, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.createdAt, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Updated</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.updatedAt, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.updatedAt, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.HiddenFor(model => model.postId, new { Value = ViewBag.postId ?? 9999 })
+    </div>
+
+    <div class="form-group">
+        @Html.HiddenFor(model => model.userId, new { Value = ViewBag.userId ?? 9999 })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to Post", "Details", "Post", new { id = ViewBag.postId ?? 9999 }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
